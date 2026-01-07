@@ -7,10 +7,19 @@ public class ServicioMedico {
     public ServicioMedico(String nombre, String descripcion, double costo, int duracion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        // Ojo que las dos asignaciones de abajo deben de tener logica de validacion en el setter, esos valores no pueden ser negativos
+    // CORRECCIÓN: Usamos los setters en lugar de asignación directa
+    // Esto asegura que la validación (if costo < 0) se ejecute al crear el objeto
+        setCosto(costo);
+        setDuracion(duracion);
+        }
+
+    public void setCosto(double costo) {
+        if(costo < 0){
+            System.out.println("El costo no puede ser menor a 0");
+            return;
+        }
         this.costo = costo;
-        this.duracion = duracion;
-    }
+        }
 
     public String getNombre() {
         return nombre;
@@ -30,14 +39,6 @@ public class ServicioMedico {
 
     public double getCosto() {
         return costo;
-    }
-
-    public void setCosto(double costo) {
-        if(costo<0){
-            System.out.println("El costo no puede ser menor a 0");
-            return;
-        }
-        this.costo = costo;
     }
 
     public int getDuracion() {

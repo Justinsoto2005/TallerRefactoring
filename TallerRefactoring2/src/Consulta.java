@@ -1,10 +1,9 @@
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Consulta {
-    public int dia;
-    public int mes;
-    public int año;
-    private String hora;
+    // reemplazo de los atributo dia, mes, año y hora
+    private LocalDateTime fechaHora;
     private Paciente paciente;
     private Medico medico;
     private ServicioMedico servicioMedico;
@@ -13,23 +12,24 @@ public class Consulta {
     private String tratamiento;
     private List<String> examenesMedicos;
 
-    public Consulta(int dia, int mes, int año, String hora, Paciente paciente, Medico medico, ServicioMedico servicioMedico, String diagnostico, String tratamiento, List<String> examenesMedicos) {
-        this.dia = dia;
-        this.mes = mes;
-        this.año = año;
-        this.hora = hora;
-        this.servicioMedico = servicioMedico;
+
+    // Constructor actualizado
+    public Consulta(LocalDateTime fechaHora, Paciente paciente, Medico medico, ServicioMedico servicioMedico, String diagnostico, String tratamiento, List<String> examenesMedicos) {
+        this.fechaHora = fechaHora; // Asignación limpia
         this.paciente = paciente;
         this.medico = medico;
+        this.servicioMedico = servicioMedico;
         this.realizada = false;
+
     }
 
-    public String getHora() {
-        return hora;
+    // Getter y Setter del nuevo objeto
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
     }
 
     public Paciente getPaciente() {
