@@ -42,11 +42,7 @@ public class SistemaAtencionMedico {
 
     // se puede parametrizar (obtener...)
     public Paciente obtenerPaciente(String nombrePaciente) {
-        for(Paciente paciente : pacientes){
-            if (paciente.getNombre().equals(nombrePaciente))
-                return paciente;
-        }
-        return null;
+        return (Paciente) obtenerPersona(this.pacientes, nombrePaciente);
     }
 
     public ServicioMedico obtenerServicioMedico(String nombreServicio) {
@@ -58,9 +54,13 @@ public class SistemaAtencionMedico {
     }
 
     public Medico obtenerMedico(String nombreMedico) {
-        for(Medico medico : medicos){
-            if (medico.getNombre().equals(nombreMedico))
-                return medico;
+        return (Medico) obtenerPersona(this.medicos, nombreMedico);
+    }
+
+    public Persona obtenerPersona(List<? extends Persona> listaPersonas, String nombre) {
+        for(Persona p : listaPersonas){
+            if (p.getNombre().equals(nombre))
+                return p;
         }
         return null;
     }
