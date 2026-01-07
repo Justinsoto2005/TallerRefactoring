@@ -5,6 +5,7 @@ public class SistemaAtencionMedico {
     private List<Paciente> pacientes;
     private List<Medico> medicos;
     private List<ServicioMedico> serviciosMedicos;
+    private static final double PORCENTAJE_DESCUENTO_ADULTO_MAYOR = 0.25;
 
     public SistemaAtencionMedico() {
         this.pacientes = new ArrayList<>();
@@ -34,11 +35,11 @@ public class SistemaAtencionMedico {
 
     public double calcularValorFinalConsulta(double costoConsulta, int edadPaciente){
         double valorARestar = 0;
-        if(edadPaciente>=65){
-            valorARestar = costoConsulta*0.25; //0.25 es el descuento para adultos mayores
+        if(edadPaciente >= 65){
+            valorARestar = costoConsulta * PORCENTAJE_DESCUENTO_ADULTO_MAYOR;
         }
-        return costoConsulta-valorARestar;
-    }
+        return costoConsulta - valorARestar;
+        }
 
     // se puede parametrizar (obtener...)
     public Paciente obtenerPaciente(String nombrePaciente) {
